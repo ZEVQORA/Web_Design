@@ -156,7 +156,7 @@ export default function DesignLab() {
         </div>
       </Section>
 
-      <Section id="buttons" title="Buttons">
+      <Section id="buttons" title="Buttons and states">
         <div className="space-y-6">
           {(["primary", "secondary", "ghost"] as const).map((v) => (
             <div key={v} className="flex flex-wrap items-center gap-4">
@@ -178,7 +178,36 @@ export default function DesignLab() {
             </div>
           ))}
           <p className="text-caption text-muted">
-            Tab through these to check the single focus treatment.
+            Tab through these to check the single focus treatment. Hover and
+            press each one to check the interaction states.
+          </p>
+        </div>
+
+        <div
+          data-surface="ink"
+          className="bg-canvas mt-8 rounded-lg p-8"
+          id="buttons-ink"
+        >
+          <p className="text-eyebrow uppercase text-subtle mb-6">
+            Same buttons on an ink surface
+          </p>
+          <div className="flex flex-wrap items-center gap-4">
+            <Button variant="primary">Get ZEVQORA</Button>
+            <Button variant="secondary">Secondary</Button>
+            <Button variant="ghost">Ghost</Button>
+            <Button variant="primary" disabled>
+              Disabled
+            </Button>
+          </div>
+        </div>
+
+        <div className="rule mt-8 pt-6">
+          <p className="text-technical font-mono text-muted">
+            measured — light: default 4.74 · hover 5.82 · active 7.47 · focus
+            ring 3.09 · control border 3.15
+          </p>
+          <p className="text-technical font-mono text-muted mt-1">
+            measured — ink: label 7.35 · focus ring 7.35 · control border 3.12
           </p>
         </div>
       </Section>

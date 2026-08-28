@@ -58,6 +58,28 @@
   --zq-accent-fg: #ffffff;
   --zq-accent-subtle: var(--zq-blue-050);
   --zq-focus: var(--zq-blue);
+
+  /*
+   * Interactive fill, distinct from the brand accent on purpose.
+   *
+   * White on the canonical Soft Blue measures 3.28:1, which does not clear AA
+   * for a button label. So white-label CTAs are filled with a derived darker
+   * step, and #468BFF is NOT replaced globally - it remains the canonical
+   * accent for the Z mark, focus rings, verification accents and non-text
+   * brand use. Reserving it that way arguably sharpens what the accent means.
+   */
+  --zq-cta: var(--zq-blue-700);
+  --zq-cta-hover: #2a61c4;
+  --zq-cta-active: #24539f;
+  --zq-cta-fg: #ffffff;
+
+  /*
+   * A control boundary is not a decorative hairline. WCAG 1.4.11 wants 3:1 for
+   * the edge that identifies an interactive component, which no Stone value can
+   * reach on this canvas. Layout hairlines stay light (--zq-border); only real
+   * controls use this.
+   */
+  --zq-border-control: #848d9b;
 }
 
 [data-surface="ink"] {
@@ -89,6 +111,14 @@
   --zq-rejected-bg: #2a1815;
   --zq-warning: #d6a94a;
   --zq-warning-bg: #26200f;
+
+  /* On ink the accent is already legible under an ink label, so the CTA fill
+     is the accent itself; it lightens rather than darkens on interaction. */
+  --zq-cta: #6ba1ff;
+  --zq-cta-hover: #8cb6ff;
+  --zq-cta-active: #a8c8ff;
+  --zq-cta-fg: var(--zq-ink);
+  --zq-border-control: #5a6372;
 }
 
 /* ============================================================
@@ -103,6 +133,11 @@
   --color-subtle: var(--zq-fg-subtle);
   --color-line: var(--zq-border);
   --color-line-strong: var(--zq-border-strong);
+  --color-line-control: var(--zq-border-control);
+  --color-cta: var(--zq-cta);
+  --color-cta-hover: var(--zq-cta-hover);
+  --color-cta-active: var(--zq-cta-active);
+  --color-cta-fg: var(--zq-cta-fg);
   --color-accent: var(--zq-accent);
   --color-accent-hover: var(--zq-accent-hover);
   --color-accent-fg: var(--zq-accent-fg);
@@ -252,6 +287,21 @@
     max-width: var(--container-wide);
     margin-inline: auto;
     padding-inline: 1.5rem;
+  }
+
+  /*
+   * The interaction transition for controls.
+   *
+   * Deliberately NOT Tailwind's `transition-colors`: in v4 that list includes
+   * outline-color, which makes the focus ring fade in over the duration -
+   * starting from currentColor, which on a filled primary button is white on
+   * blue, i.e. invisible for the first frames. A focus indicator has to be
+   * there the instant it is needed, so outline-color is excluded here.
+   */
+  .transition-control {
+    transition-property: color, background-color, border-color;
+    transition-duration: var(--duration-micro);
+    transition-timing-function: var(--ease-standard);
   }
 
   /* Hairline rule that survives the ink inversion. */

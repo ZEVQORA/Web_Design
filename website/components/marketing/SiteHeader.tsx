@@ -51,7 +51,7 @@ export function SiteHeader() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-nav rounded-sm py-2 text-muted transition-colors duration-[120ms] hover:text-ink"
+                  className="text-nav rounded-sm py-2 text-muted transition-control hover:text-ink"
                 >
                   {item.label}
                 </Link>
@@ -63,7 +63,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <Link
             href="/login"
-            className="text-nav hidden rounded-sm px-3 py-2 text-muted transition-colors duration-[120ms] hover:text-ink sm:inline-block"
+            className="text-nav hidden rounded-sm px-3 py-2 text-muted transition-control hover:text-ink sm:inline-block"
           >
             Sign in
           </Link>

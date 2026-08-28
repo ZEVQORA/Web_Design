@@ -6,24 +6,40 @@ type Variant = "primary" | "secondary" | "ghost";
 type Size = "sm" | "md" | "lg";
 
 const base =
-  "relative inline-flex items-center justify-center gap-2 rounded-md text-button font-medium " +
-  "transition-colors duration-[120ms] ease-[cubic-bezier(0.2,0,0,1)] " +
+  "relative inline-flex items-center justify-center gap-2 text-button font-medium " +
+  "transition-control " +
   "disabled:pointer-events-none disabled:opacity-45 " +
   "aria-disabled:pointer-events-none aria-disabled:opacity-45";
 
 const variants: Record<Variant, string> = {
-  // The single primary action across the whole site.
-  primary: "bg-accent text-accent-fg hover:bg-accent-hover",
+  /*
+   * The single primary action across the whole site. Filled with --cta rather
+   * than the brand accent: white on Soft Blue is 3.28:1 and would fail AA on
+   * the most important label on the site. Every state below was measured.
+   *   default 4.74:1 · hover 5.82:1 · active 7.47:1
+   */
+  primary:
+    "bg-cta text-cta-fg hover:bg-cta-hover active:bg-cta-active",
+  /*
+   * The border is the thing that identifies this as a control, so it uses the
+   * control-boundary token (3.15:1) rather than the decorative hairline, which
+   * is only 1.15:1 against the canvas.
+   */
   secondary:
-    "bg-surface text-ink border border-line hover:border-line-strong hover:bg-canvas",
-  ghost: "text-muted hover:text-ink",
+    "bg-surface text-ink border border-line-control hover:bg-canvas active:bg-line/40",
+  ghost: "text-muted hover:text-ink active:text-muted",
 };
 
+/*
+ * Radius follows size so the corner stays proportionally the same. A flat
+ * 10px on a 32px control reads as 31% of the height - almost a pill, which
+ * the system does not want.
+ */
 const sizes: Record<Size, string> = {
-  sm: "h-8 px-3",
+  sm: "h-8 px-3 rounded-sm",
   // 44px tall - meets the touch-target minimum without looking chunky.
-  md: "h-11 px-5",
-  lg: "h-12 px-6",
+  md: "h-11 px-5 rounded-md",
+  lg: "h-12 px-6 rounded-md",
 };
 
 interface CommonProps {
