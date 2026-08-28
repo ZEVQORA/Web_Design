@@ -13,3 +13,6 @@ Thumbs.db
 .vercel/
 *.tsbuildinfo
 .eslintcache
+
+# one-off debugging scratch
+tools/dbg*.mjs
