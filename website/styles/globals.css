@@ -25,7 +25,8 @@
   /* Tonal steps derived from the four brand colours only. */
   --zq-ink-700: #2a2f39;
   --zq-ink-500: #565e6d;
-  --zq-ink-400: #79818f;
+  /* 4.56:1 on canvas - the lightest step that still clears AA for 13px text. */
+  --zq-ink-400: #6a7280;
   --zq-stone-300: #d5dae2;
   --zq-blue-700: #2f6fdc;
   --zq-blue-050: #eef4ff;
@@ -74,7 +75,7 @@
   --zq-elevated: #1b1f27;
   --zq-fg: var(--zq-cloud);
   --zq-fg-muted: #9aa2b1;
-  --zq-fg-subtle: #6b7383;
+  --zq-fg-subtle: #7a8394; /* 4.95:1 on ink */
   --zq-border: #262b35;
   --zq-border-strong: #333a47;
   --zq-accent: #6ba1ff;
