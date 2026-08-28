@@ -1,0 +1,12 @@
+{
+  "name": "zevqora-design-tools",
+  "private": true,
+  "type": "module",
+  "description": "Build-time asset pipeline: traces brand marks and extracts Zev sprites from the canonical references.",
+  "dependencies": {
+    "potrace": "^2.1.8"
+  },
+  "devDependencies": {
+    "playwright": "^1.62.1"
+  }
+}

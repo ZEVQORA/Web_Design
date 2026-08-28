@@ -1,0 +1,15 @@
+node_modules/
+.next/
+out/
+build/
+dist/
+*.log
+install.log
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+.vercel/
+*.tsbuildinfo
+.eslintcache

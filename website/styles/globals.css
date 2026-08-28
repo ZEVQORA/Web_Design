@@ -1,0 +1,288 @@
+@import "tailwindcss";
+
+/* ============================================================
+   ZEVQORA — FONT FACES
+   Satoshi is self-hosted (Fontshare / ITF Free Font License).
+   Variable axis 300–900, one file for the whole range.
+   ============================================================ */
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Variable.woff2") format("woff2-variations");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
+   RAW PALETTE — from the ZEVQORA brand board. Do not extend.
+   ============================================================ */
+:root {
+  --zq-ink: #0f1115;
+  --zq-cloud: #f7f8fa;
+  --zq-blue: #468bff;
+  --zq-stone: #e6e9ee;
+
+  /* Tonal steps derived from the four brand colours only. */
+  --zq-ink-700: #2a2f39;
+  --zq-ink-500: #565e6d;
+  --zq-ink-400: #79818f;
+  --zq-stone-300: #d5dae2;
+  --zq-blue-700: #2f6fdc;
+  --zq-blue-050: #eef4ff;
+
+  /* Semantic state. Restrained, never neon. */
+  --zq-verified: #0e7355;
+  --zq-verified-bg: #e9f4f0;
+  --zq-rejected: #a83228;
+  --zq-rejected-bg: #fbeeec;
+  --zq-warning: #8a6100;
+  --zq-warning-bg: #fbf3e2;
+}
+
+/* ============================================================
+   SEMANTIC LAYER — runtime vars so a section can invert.
+   Anything scoped in [data-surface="ink"] flips wholesale.
+   ============================================================ */
+:root {
+  --zq-canvas: var(--zq-cloud);
+  --zq-surface: #ffffff;
+  --zq-elevated: #ffffff;
+  --zq-fg: var(--zq-ink);
+  --zq-fg-muted: var(--zq-ink-500);
+  --zq-fg-subtle: var(--zq-ink-400);
+  --zq-border: var(--zq-stone);
+  --zq-border-strong: var(--zq-stone-300);
+  --zq-accent: var(--zq-blue);
+  --zq-accent-hover: var(--zq-blue-700);
+  --zq-accent-fg: #ffffff;
+  --zq-accent-subtle: var(--zq-blue-050);
+  --zq-focus: var(--zq-blue);
+}
+
+[data-surface="ink"] {
+  /*
+   * Re-declaring the tokens is not enough on its own. `color` is inherited as
+   * a computed value from <body>, so redefining --zq-fg further down the tree
+   * does not repaint text that never set a colour of its own - it would stay
+   * ink-on-ink. Setting `color` here gives the whole subtree something correct
+   * to inherit.
+   */
+  color: var(--zq-fg);
+
+  --zq-canvas: var(--zq-ink);
+  --zq-surface: #15181e;
+  --zq-elevated: #1b1f27;
+  --zq-fg: var(--zq-cloud);
+  --zq-fg-muted: #9aa2b1;
+  --zq-fg-subtle: #6b7383;
+  --zq-border: #262b35;
+  --zq-border-strong: #333a47;
+  --zq-accent: #6ba1ff;
+  --zq-accent-hover: #8cb6ff;
+  --zq-accent-fg: var(--zq-ink);
+  --zq-accent-subtle: #1a2434;
+  --zq-focus: #6ba1ff;
+  --zq-verified: #4cc79c;
+  --zq-verified-bg: #12271f;
+  --zq-rejected: #e8837a;
+  --zq-rejected-bg: #2a1815;
+  --zq-warning: #d6a94a;
+  --zq-warning-bg: #26200f;
+}
+
+/* ============================================================
+   TAILWIND THEME MAPPING
+   ============================================================ */
+@theme inline {
+  --color-canvas: var(--zq-canvas);
+  --color-surface: var(--zq-surface);
+  --color-elevated: var(--zq-elevated);
+  --color-ink: var(--zq-fg);
+  --color-muted: var(--zq-fg-muted);
+  --color-subtle: var(--zq-fg-subtle);
+  --color-line: var(--zq-border);
+  --color-line-strong: var(--zq-border-strong);
+  --color-accent: var(--zq-accent);
+  --color-accent-hover: var(--zq-accent-hover);
+  --color-accent-fg: var(--zq-accent-fg);
+  --color-accent-subtle: var(--zq-accent-subtle);
+  --color-verified: var(--zq-verified);
+  --color-verified-bg: var(--zq-verified-bg);
+  --color-rejected: var(--zq-rejected);
+  --color-rejected-bg: var(--zq-rejected-bg);
+  --color-warning: var(--zq-warning);
+  --color-warning-bg: var(--zq-warning-bg);
+
+  --font-sans: "Satoshi", "Manrope", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular",
+    "Menlo", monospace;
+
+  /* Type scale — display through technical. */
+  --text-display: clamp(3.25rem, 5.4vw, 5rem);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.042em;
+  --text-display--font-weight: 700;
+
+  --text-h1: clamp(2.5rem, 4vw, 3.5rem);
+  --text-h1--line-height: 1.04;
+  --text-h1--letter-spacing: -0.035em;
+  --text-h1--font-weight: 700;
+
+  --text-h2: clamp(1.875rem, 2.6vw, 2.5rem);
+  --text-h2--line-height: 1.1;
+  --text-h2--letter-spacing: -0.028em;
+  --text-h2--font-weight: 700;
+
+  --text-h3: 1.3125rem;
+  --text-h3--line-height: 1.3;
+  --text-h3--letter-spacing: -0.018em;
+  --text-h3--font-weight: 600;
+
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.6;
+  --text-body-lg--letter-spacing: -0.011em;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.65;
+  --text-body--letter-spacing: -0.006em;
+
+  --text-caption: 0.8125rem;
+  --text-caption--line-height: 1.5;
+
+  --text-technical: 0.8125rem;
+  --text-technical--line-height: 1.45;
+  --text-technical--letter-spacing: 0.005em;
+
+  --text-eyebrow: 0.75rem;
+  --text-eyebrow--line-height: 1.2;
+  --text-eyebrow--letter-spacing: 0.14em;
+  --text-eyebrow--font-weight: 600;
+
+  --text-nav: 0.875rem;
+  --text-nav--line-height: 1;
+  --text-nav--letter-spacing: -0.008em;
+  --text-nav--font-weight: 500;
+
+  --text-button: 0.9375rem;
+  --text-button--line-height: 1;
+  --text-button--letter-spacing: -0.008em;
+  --text-button--font-weight: 550;
+
+  /* Radius — three steps, deliberately small. */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  /* Depth — borders do most of the work. */
+  --shadow-lift: 0 1px 2px rgb(15 17 21 / 0.04), 0 8px 24px -14px rgb(15 17 21 / 0.14);
+  --shadow-panel: 0 2px 4px rgb(15 17 21 / 0.04), 0 24px 60px -28px rgb(15 17 21 / 0.24);
+
+  /* Layout */
+  --container-page: 1200px;
+  --container-wide: 1360px;
+
+  /* Motion — one vocabulary, shared with the JS runtime. */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --duration-micro: 120ms;
+  --duration-enter: 320ms;
+  --duration-section: 560ms;
+  --duration-hero: 900ms;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+@layer base {
+  * {
+    border-color: var(--zq-border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--zq-canvas);
+    color: var(--zq-fg);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* One focus treatment for the whole product. */
+  :focus-visible {
+    outline: 2px solid var(--zq-focus);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--zq-blue);
+    color: #ffffff;
+  }
+
+  /* Tabular figures everywhere a number is compared. */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+  }
+}
+
+@layer utilities {
+  .container-page {
+    width: 100%;
+    max-width: var(--container-page);
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .container-page {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  .container-wide {
+    width: 100%;
+    max-width: var(--container-wide);
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  /* Hairline rule that survives the ink inversion. */
+  .rule {
+    border-top: 1px solid var(--zq-border);
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION — global honest fallback.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   KEYFRAMES — the only two in the system. Both opacity-only, so
+   nothing distorts the locked brand geometry.
+   ============================================================ */
+@keyframes zq-loader-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes zq-loader-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.42; }
+}
