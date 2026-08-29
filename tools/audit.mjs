@@ -1,5 +1,5 @@
 import { chromium } from "playwright";
-const BASE = "http://127.0.0.1:3000";
+const BASE = "http://127.0.0.1:3100";
 const route = process.argv[2] ?? "/";
 const b = await chromium.launch();
 const p = await b.newPage({ viewport: { width: 1440, height: 900 } });

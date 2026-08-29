@@ -15,7 +15,7 @@ let fails = 0;
 const check = (label, r, need) => { if (r < need) fails++; console.log(`  ${label.padEnd(34)} ${pf(r, need)}`); };
 
 const p = await b.newPage({ viewport: { width: 1440, height: 900 } });
-await p.goto("http://127.0.0.1:3000/design-lab", { waitUntil: "networkidle" });
+await p.goto("http://127.0.0.1:3100/design-lab", { waitUntil: "networkidle" });
 await p.evaluate(() => document.fonts.ready);
 const read = (sel = "#buttons button") => p.evaluate((s) => {
   const el = document.querySelector(s); const cs = getComputedStyle(el);
@@ -44,7 +44,7 @@ console.log("  " + JSON.stringify(await p.evaluate(() => {
 
 console.log("\nFOCUS-VISIBLE, keyboard (ring needs 3:1 vs its backdrop)");
 const p2 = await b.newPage({ viewport: { width: 1440, height: 900 } });
-await p2.goto("http://127.0.0.1:3000/design-lab", { waitUntil: "networkidle" });
+await p2.goto("http://127.0.0.1:3100/design-lab", { waitUntil: "networkidle" });
 for (let i = 0; i < 40; i++) {
   await p2.keyboard.press("Tab");
   if (await p2.evaluate(() => document.activeElement instanceof HTMLButtonElement)) break;

@@ -13,7 +13,7 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import { chromium } from "playwright";
 
-const BASE = process.env.ZQ_BASE ?? "http://127.0.0.1:3000";
+const BASE = process.env.ZQ_BASE ?? "http://127.0.0.1:3100";
 
 const VIEWPORTS = {
   "1512x982": { width: 1512, height: 982 },

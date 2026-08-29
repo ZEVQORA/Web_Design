@@ -1,14 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "motion/react";
 import { cn } from "@/lib/cn";
-import {
-  getServerZevMood,
-  getZevMood,
-  subscribeZevMood,
-  type ZevMood,
-} from "@/lib/zevMood";
+import { useZevMood, type ZevMood } from "./ZevMoodContext";
 import { Zev, type ZevView } from "./Zev";
 
 /**
@@ -52,11 +47,7 @@ export function ZevScene({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
-  const mood = useSyncExternalStore(
-    subscribeZevMood,
-    getZevMood,
-    getServerZevMood,
-  );
+  const mood = useZevMood();
   const [t, setT] = useState({ x: 0, y: 0, ry: 0, rx: 0 });
 
   const active: ZevView = view ?? MOOD_VIEW[react ? mood : "idle"];
@@ -93,6 +84,7 @@ export function ZevScene({
   return (
     <div
       ref={ref}
+      data-mood={mood}
       className={cn("relative isolate", className)}
       style={{ perspective: "900px" }}
     >

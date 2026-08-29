@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { setZevMood, type ZevMood } from "@/lib/zevMood";
+import { useSetZevMood, type ZevMood } from "./ZevMoodContext";
 
 /**
  * Sets Zev's mood while a control is hovered or focused.
@@ -19,13 +19,14 @@ export function ZevMoodTrigger({
   children: ReactNode;
   className?: string;
 }) {
+  const setMood = useSetZevMood();
   return (
     <span
       className={className}
-      onPointerEnter={() => setZevMood(mood)}
-      onPointerLeave={() => setZevMood("idle")}
-      onFocusCapture={() => setZevMood(mood)}
-      onBlurCapture={() => setZevMood("idle")}
+      onPointerEnter={() => setMood(mood)}
+      onPointerLeave={() => setMood("idle")}
+      onFocusCapture={() => setMood(mood)}
+      onBlurCapture={() => setMood("idle")}
     >
       {children}
     </span>

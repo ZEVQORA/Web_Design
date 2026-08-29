@@ -1,6 +1,7 @@
 import { ButtonLink } from "@/components/ui/Button";
 import { ZevScene } from "@/components/brand/zev/ZevScene";
 import { ZevMoodTrigger } from "@/components/brand/zev/ZevMoodTrigger";
+import { ZevMoodProvider } from "@/components/brand/zev/ZevMoodContext";
 import { site } from "@/config/site";
 import { EvidenceInstrument } from "./EvidenceInstrument";
 
@@ -20,6 +21,7 @@ import { EvidenceInstrument } from "./EvidenceInstrument";
 export function Hero() {
   return (
     <section className="studio relative overflow-hidden border-b border-line">
+      <ZevMoodProvider>
       <div className="container-wide grid items-center gap-16 py-16 lg:grid-cols-12 lg:gap-10 lg:py-20">
         <div className="lg:col-span-5">
           <p className="text-eyebrow text-muted uppercase">{site.tagline}</p>
@@ -68,6 +70,7 @@ export function Hero() {
           </div>
         </div>
       </div>
+      </ZevMoodProvider>
     </section>
   );
 }
