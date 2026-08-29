@@ -1,0 +1,47 @@
+{
+ "front": {
+  "src": "/assets/zev/zev-front.webp",
+  "w": 245,
+  "h": 306
+ },
+ "three-quarter-front": {
+  "src": "/assets/zev/zev-three-quarter-front.webp",
+  "w": 263,
+  "h": 304
+ },
+ "side": {
+  "src": "/assets/zev/zev-side.webp",
+  "w": 273,
+  "h": 302
+ },
+ "three-quarter-back": {
+  "src": "/assets/zev/zev-three-quarter-back.webp",
+  "w": 233,
+  "h": 315
+ },
+ "back": {
+  "src": "/assets/zev/zev-back.webp",
+  "w": 230,
+  "h": 304
+ },
+ "pose-sitting": {
+  "src": "/assets/zev/zev-pose-sitting.webp",
+  "w": 140,
+  "h": 176
+ },
+ "pose-playful": {
+  "src": "/assets/zev/zev-pose-playful.webp",
+  "w": 168,
+  "h": 145
+ },
+ "pose-thinking": {
+  "src": "/assets/zev/zev-pose-thinking.webp",
+  "w": 141,
+  "h": 167
+ },
+ "pose-waving": {
+  "src": "/assets/zev/zev-pose-waving.webp",
+  "w": 144,
+  "h": 176
+ }
+}
