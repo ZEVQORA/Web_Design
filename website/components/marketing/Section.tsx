@@ -19,16 +19,23 @@ export function Section({
   id?: string;
   children: ReactNode;
   className?: string;
-  surface?: "ink";
+  /**
+   * `ink` inverts the whole subtree. `sunken` is a Cloud-adjacent plane a
+   * shade below the canvas - enough to separate one movement of the argument
+   * from the next without turning the page into stripes.
+   */
+  surface?: "ink" | "sunken";
   rule?: boolean;
 }) {
   return (
     <section
       id={id}
       data-surface={surface}
+      data-sunken={surface === "sunken" ? "" : undefined}
       className={cn(
         "py-24 lg:py-32",
         surface === "ink" && "bg-canvas",
+        surface === "sunken" && "bg-sunken border-y border-line",
         rule && !surface && "border-t border-line",
         className,
       )}

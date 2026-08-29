@@ -25,13 +25,15 @@ export function PricingSection({ heading = true }: { heading?: boolean }) {
         </div>
       )}
 
-      <div className="mt-14 grid gap-px border border-line bg-line lg:grid-cols-3">
+      <div className="mt-14 grid gap-px overflow-hidden rounded-lg border border-line bg-line shadow-[0_2px_6px_rgb(15_17_21/0.04),0_24px_64px_-32px_rgb(15_17_21/0.14)] lg:grid-cols-3">
         {billing.plans.map((plan) => (
           <div
             key={plan.id}
             className={cn(
-              "bg-surface flex flex-col p-8 lg:p-10",
-              plan.emphasis && "bg-canvas",
+              "bg-raised flex flex-col p-8 lg:p-10",
+              // The emphasised plan sits forward: brighter ground, lit edge.
+              plan.emphasis &&
+                "bg-surface shadow-[inset_0_1px_0_rgb(255_255_255/0.9)] relative z-10",
             )}
           >
             <div className="flex items-baseline justify-between gap-4">

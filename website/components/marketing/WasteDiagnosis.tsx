@@ -33,7 +33,7 @@ export function WasteDiagnosis() {
           {DIAGNOSES.map((d) => (
             <li
               key={d.id}
-              className="grid gap-x-10 gap-y-4 border-b border-line py-8 lg:grid-cols-[1fr_1.3fr_auto] lg:items-start"
+              className="grid gap-x-10 gap-y-4 border-b border-line py-8 lg:grid-cols-[1fr_1.3fr_auto] lg:items-start hover:bg-raised/60 transition-colors duration-[160ms] -mx-4 px-4 rounded-md"
             >
               <div>
                 <h3 className="text-h3 text-ink">{d.title}</h3>

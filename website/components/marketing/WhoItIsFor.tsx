@@ -11,7 +11,7 @@ const FIT = [
 
 export function WhoItIsFor() {
   return (
-    <Section>
+    <Section surface="sunken">
       <div className="container-page">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
           <div>

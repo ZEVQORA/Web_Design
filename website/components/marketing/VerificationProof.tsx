@@ -81,7 +81,7 @@ function Panel({ c, headline }: { c: BenchmarkCase; headline: string }) {
 
 export function VerificationProof() {
   return (
-    <Section id="proof">
+    <Section id="proof" className="studio">
       <div className="container-page">
         <div className="flex items-baseline gap-6">
           <StepMark step={6} of={6} />

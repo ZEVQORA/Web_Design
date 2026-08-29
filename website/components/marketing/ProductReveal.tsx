@@ -3,7 +3,7 @@ import { MacbookReveal } from "./MacbookReveal";
 
 export function ProductReveal() {
   return (
-    <Section>
+    <Section surface="ink" rule={false}>
       <div className="container-page">
         <div className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-end">
           <h2 className="text-h1 max-w-[16ch]">
@@ -22,7 +22,7 @@ export function ProductReveal() {
       </div>
 
       <div className="container-page">
-        <p className="text-technical font-mono text-subtle mt-6 text-center">
+        <p className="text-technical font-mono text-subtle mt-8 text-center">
           Product preview with seeded demo data. Not a live workspace.
         </p>
       </div>

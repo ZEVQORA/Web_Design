@@ -48,6 +48,16 @@
   --zq-canvas: var(--zq-cloud);
   --zq-surface: #ffffff;
   --zq-elevated: #ffffff;
+  /*
+   * Two Cloud-adjacent planes so the page is not one flat sheet. `sunken` is
+   * a shade below the canvas for sections that should recede; `raised` is the
+   * plane an instrument sits on. Both stay inside the Cloud family - this is
+   * tonal separation, not a new palette.
+   */
+  --zq-sunken: #f2f4f7;
+  --zq-raised: #ffffff;
+  /* A hairline of light along a raised top edge. */
+  --zq-inset-highlight: inset 0 1px 0 rgb(255 255 255 / 0.9);
   --zq-fg: var(--zq-ink);
   --zq-fg-muted: var(--zq-ink-500);
   --zq-fg-subtle: var(--zq-ink-400);
@@ -72,6 +82,13 @@
   --zq-cta-hover: #2a61c4;
   --zq-cta-active: #24539f;
   --zq-cta-fg: #ffffff;
+  /*
+   * Accent-coloured *text*. The canonical Soft Blue measures 3.09:1 on canvas,
+   * which clears AA only for large type - so it stays the brand accent for
+   * marks, rules and indicators, and coloured words use this derived step
+   * (4.46:1) instead. Same blue family, safe at any size.
+   */
+  --zq-accent-text: var(--zq-blue-700);
 
   /*
    * A control boundary is not a decorative hairline. WCAG 1.4.11 wants 3:1 for
@@ -111,6 +128,9 @@
   --zq-rejected-bg: #2a1815;
   --zq-warning: #d6a94a;
   --zq-warning-bg: #26200f;
+  --zq-sunken: #0b0d11;
+  --zq-raised: #171b22;
+  --zq-inset-highlight: inset 0 1px 0 rgb(255 255 255 / 0.05);
 
   /* On ink the accent is already legible under an ink label, so the CTA fill
      is the accent itself; it lightens rather than darkens on interaction. */
@@ -118,7 +138,48 @@
   --zq-cta-hover: #8cb6ff;
   --zq-cta-active: #a8c8ff;
   --zq-cta-fg: var(--zq-ink);
+  --zq-accent-text: #8cb6ff;
   --zq-border-control: #5a6372;
+}
+
+/*
+ * Re-establishes the light palette inside an inverted subtree.
+ *
+ * The product reveal sits on an ink field, and a laptop screen in a dark room
+ * is lit - it does not go dark with the room. This lets the screen keep the
+ * light palette while everything around it stays inverted.
+ */
+[data-surface="light"] {
+  color: var(--zq-fg);
+
+  --zq-canvas: var(--zq-cloud);
+  --zq-surface: #ffffff;
+  --zq-elevated: #ffffff;
+  --zq-sunken: #f2f4f7;
+  --zq-raised: #ffffff;
+  --zq-inset-highlight: inset 0 1px 0 rgb(255 255 255 / 0.9);
+  --zq-fg: var(--zq-ink);
+  --zq-fg-muted: var(--zq-ink-500);
+  --zq-fg-subtle: var(--zq-ink-400);
+  --zq-border: var(--zq-stone);
+  --zq-border-strong: var(--zq-stone-300);
+  --zq-border-control: #848d9b;
+  --zq-accent: var(--zq-blue);
+  --zq-accent-hover: var(--zq-blue-700);
+  --zq-accent-fg: #ffffff;
+  --zq-accent-subtle: var(--zq-blue-050);
+  --zq-accent-text: var(--zq-blue-700);
+  --zq-focus: var(--zq-blue);
+  --zq-cta: var(--zq-blue-700);
+  --zq-cta-hover: #2a61c4;
+  --zq-cta-active: #24539f;
+  --zq-cta-fg: #ffffff;
+  --zq-verified: #0e7355;
+  --zq-verified-bg: #e9f4f0;
+  --zq-rejected: #a83228;
+  --zq-rejected-bg: #fbeeec;
+  --zq-warning: #8a6100;
+  --zq-warning-bg: #fbf3e2;
 }
 
 /* ============================================================
@@ -134,10 +195,13 @@
   --color-line: var(--zq-border);
   --color-line-strong: var(--zq-border-strong);
   --color-line-control: var(--zq-border-control);
+  --color-sunken: var(--zq-sunken);
+  --color-raised: var(--zq-raised);
   --color-cta: var(--zq-cta);
   --color-cta-hover: var(--zq-cta-hover);
   --color-cta-active: var(--zq-cta-active);
   --color-cta-fg: var(--zq-cta-fg);
+  --color-accent-text: var(--zq-accent-text);
   --color-accent: var(--zq-accent);
   --color-accent-hover: var(--zq-accent-hover);
   --color-accent-fg: var(--zq-accent-fg);
@@ -302,6 +366,30 @@
     transition-property: color, background-color, border-color;
     transition-duration: var(--duration-micro);
     transition-timing-function: var(--ease-standard);
+  }
+
+  /* A raised plane: ambient pool, contact shadow, and a lit top edge. */
+  .plane {
+    background: var(--zq-raised);
+    box-shadow: var(--shadow-ambient), var(--zq-inset-highlight);
+  }
+
+  .plane-instrument {
+    background: var(--zq-raised);
+    box-shadow: var(--shadow-instrument), var(--zq-inset-highlight);
+  }
+
+  /*
+   * Studio falloff. A single very soft radial, well under the noise floor of a
+   * gradient people notice - it exists to stop a large surface reading as flat
+   * paper, not to be seen.
+   */
+  .studio {
+    background-image: radial-gradient(
+      120% 80% at 50% 0%,
+      rgb(255 255 255 / 0.85),
+      transparent 60%
+    );
   }
 
   /* Hairline rule that survives the ink inversion. */

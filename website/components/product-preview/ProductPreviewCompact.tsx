@@ -16,7 +16,7 @@ export function ProductPreviewCompact() {
   const max = Math.max(...spend.map((s) => s.share));
 
   return (
-    <div className="bg-surface">
+    <div data-surface="light" className="bg-surface">
       <div className="flex items-center justify-between border-b border-line px-5 py-4">
         <span className="flex items-center gap-2.5">
           <ZevqoraMark height={18} />

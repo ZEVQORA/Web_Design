@@ -25,7 +25,7 @@ export function AuthShell({
   aside?: ReactNode;
 }) {
   return (
-    <main id="main" className="min-h-dvh lg:grid lg:grid-cols-[1fr_1fr]">
+    <main id="main" className="studio min-h-dvh lg:grid lg:grid-cols-[1fr_1fr]">
       <div className="flex flex-col px-6 py-10 lg:px-14 lg:py-14">
         <Link href="/" aria-label="ZEVQORA home" className="inline-flex w-fit rounded-sm">
           <ZevqoraLogo size={26} />

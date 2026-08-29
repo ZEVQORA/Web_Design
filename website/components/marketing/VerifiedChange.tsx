@@ -16,7 +16,7 @@ const READY = [
  */
 export function VerifiedChange() {
   return (
-    <Section>
+    <Section surface="sunken">
       <div className="container-page">
         <div className="grid gap-14 lg:grid-cols-[1fr_1fr] lg:gap-20">
           <div>

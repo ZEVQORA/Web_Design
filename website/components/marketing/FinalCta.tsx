@@ -5,7 +5,7 @@ import { Section } from "./Section";
 
 export function FinalCta() {
   return (
-    <Section>
+    <Section className="studio">
       <div className="container-page">
         <div className="grid items-end gap-12 lg:grid-cols-[1.3fr_auto]">
           <div>

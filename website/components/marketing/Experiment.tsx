@@ -36,11 +36,11 @@ export function Experiment() {
           </p>
         </div>
 
-        <div className="mt-14 flex flex-col">
+        <div className="mt-12 flex flex-col">
           {CANDIDATES.map((c, i) => (
             <article
               key={c.id}
-              className="border-t border-line py-8 last:border-b"
+              className="bg-raised border-line mt-4 rounded-lg border p-7 shadow-[0_1px_2px_rgb(15_17_21/0.04),0_12px_32px_-20px_rgb(15_17_21/0.14)] lg:p-8"
             >
               <div className="flex flex-wrap items-baseline justify-between gap-4">
                 <div className="flex items-baseline gap-5">

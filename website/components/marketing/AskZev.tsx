@@ -1,5 +1,5 @@
 import { ASK_ZEV_ANSWER, ASK_ZEV_QUESTIONS } from "@/data/product-demo";
-import { Zev } from "@/components/brand/zev/Zev";
+import { ZevFace } from "@/components/brand/zev/ZevFace";
 import { Section } from "./Section";
 
 /**
@@ -26,23 +26,25 @@ export function AskZev() {
               dashboard.
             </p>
 
-            <div className="mt-9 flex items-end gap-5">
-              <Zev view="pose-thinking" height={150} />
-              <ul className="flex flex-col gap-2 pb-2">
-                {ASK_ZEV_QUESTIONS.map((q) => (
-                  <li
-                    key={q}
-                    className="text-caption text-muted border-line rounded-md border px-3 py-2"
-                  >
-                    {q}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ul className="mt-9 flex flex-col gap-2.5">
+              {ASK_ZEV_QUESTIONS.map((q) => (
+                <li
+                  key={q}
+                  className="text-caption text-muted border-line bg-raised rounded-md border px-4 py-3 shadow-[0_1px_2px_rgb(15_17_21/0.04)]"
+                >
+                  {q}
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <div className="border-t border-line pt-8">
-            <p className="text-caption text-ink">{ASK_ZEV_ANSWER.question}</p>
+          <div className="plane rounded-lg p-8 lg:p-10">
+            <div className="flex items-start gap-4">
+              <ZevFace expression="focused" size={44} />
+              <p className="text-caption text-ink pt-2">
+                {ASK_ZEV_ANSWER.question}
+              </p>
+            </div>
             <div className="mt-6 flex flex-col gap-4">
               {ASK_ZEV_ANSWER.lines.map((l) => (
                 <p key={l} className="text-body text-muted max-w-[52ch]">

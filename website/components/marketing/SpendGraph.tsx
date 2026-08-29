@@ -23,7 +23,7 @@ export function SpendGraph() {
   const max = Math.max(...children.map((c) => c.share));
 
   return (
-    <Section id="product">
+    <Section id="product" surface="sunken">
       <div className="container-page">
         <div className="flex items-baseline gap-6">
           <StepMark step={2} of={6} />

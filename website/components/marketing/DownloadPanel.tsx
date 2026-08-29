@@ -34,12 +34,12 @@ export function DownloadPanel() {
   );
 
   return (
-    <div className="grid gap-px border border-line bg-line sm:grid-cols-2">
+    <div className="grid gap-px overflow-hidden rounded-lg border border-line bg-line shadow-[0_2px_6px_rgb(15_17_21/0.04),0_24px_64px_-32px_rgb(15_17_21/0.14)] sm:grid-cols-2">
       {ordered.map((b) => {
         const available = isBuildAvailable(b);
         const Icon = b.os === "macOS" ? Apple : Monitor;
         return (
-          <div key={b.os} className="bg-surface flex flex-col p-8">
+          <div key={b.os} className="bg-raised flex flex-col p-8">
             <div className="flex items-center gap-3">
               <Icon size={18} className="text-muted" aria-hidden />
               <h2 className="text-h3">{b.os}</h2>

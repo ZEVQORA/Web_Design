@@ -30,23 +30,23 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 transition-colors duration-[320ms] ease-[cubic-bezier(0.2,0,0,1)]",
+        "sticky top-0 z-40 transition-[background-color,border-color,box-shadow] duration-[320ms] ease-[cubic-bezier(0.2,0,0,1)]",
         scrolled
-          ? "border-b border-line bg-canvas/85 backdrop-blur-md"
+          ? "border-b border-line bg-canvas/80 shadow-[0_1px_0_rgb(15_17_21/0.02),0_8px_24px_-16px_rgb(15_17_21/0.16)] backdrop-blur-xl backdrop-saturate-150"
           : "border-b border-transparent",
       )}
     >
-      <div className="container-page flex h-16 items-center justify-between gap-8">
+      <div className="container-wide flex h-[68px] items-center justify-between gap-8">
         <Link
           href="/"
           aria-label="ZEVQORA home"
           className="rounded-sm py-2 text-ink"
         >
-          <ZevqoraLogo size={26} />
+          <ZevqoraLogo size={28} />
         </Link>
 
         <nav aria-label="Primary" className="hidden lg:block">
-          <ul className="flex items-center gap-8">
+          <ul className="flex items-center gap-9">
             {site.nav.map((item) => (
               <li key={item.href}>
                 <Link

@@ -51,7 +51,7 @@ export function MacbookReveal() {
           type - a picture of a product rather than a product - so the same
           information is laid out for the width that actually exists. */}
       <div className="lg:hidden">
-        <div className="border-line overflow-hidden rounded-lg border shadow-lift">
+        <div className="border-line plane overflow-hidden rounded-lg border">
           <ProductPreviewCompact />
         </div>
       </div>

@@ -21,6 +21,7 @@ export function ProductPreview({ className }: { className?: string }) {
 
   return (
     <div
+      data-surface="light"
       className={cn("bg-canvas text-ink flex h-full w-full", className)}
       style={{ containerType: "inline-size" }}
       aria-hidden

@@ -43,5 +43,35 @@
   "src": "/assets/zev/zev-pose-waving.webp",
   "w": 144,
   "h": 170
+ },
+ "face-warm-smile": {
+  "src": "/assets/zev/zev-face-warm-smile.webp",
+  "w": 132,
+  "h": 128
+ },
+ "face-delighted": {
+  "src": "/assets/zev/zev-face-delighted.webp",
+  "w": 131,
+  "h": 128
+ },
+ "face-calm-confidence": {
+  "src": "/assets/zev/zev-face-calm-confidence.webp",
+  "w": 131,
+  "h": 128
+ },
+ "face-curious": {
+  "src": "/assets/zev/zev-face-curious.webp",
+  "w": 139,
+  "h": 128
+ },
+ "face-focused": {
+  "src": "/assets/zev/zev-face-focused.webp",
+  "w": 138,
+  "h": 128
+ },
+ "face-friendly-idle": {
+  "src": "/assets/zev/zev-face-friendly-idle.webp",
+  "w": 139,
+  "h": 128
  }
 }
