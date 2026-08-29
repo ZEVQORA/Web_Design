@@ -117,10 +117,28 @@ def alpha_for(bgr: np.ndarray) -> np.ndarray:
     return cv2.GaussianBlur(alpha, (0, 0), 0.7)
 
 
+def drop_specks(a: np.ndarray, min_frac: float = 0.004) -> np.ndarray:
+    """Remove isolated alpha islands far too small to be part of Zev.
+
+    The grouping dilation pulls in anything near the figure, which can include a
+    stray mark from the sheet. Invisible on Cloud, obvious on ink.
+    """
+    solid = a > 0.35
+    lbl, n = ndimage.label(solid)
+    if n <= 1:
+        return a
+    sizes = ndimage.sum(solid, lbl, range(1, n + 1))
+    keep = {i + 1 for i, sz in enumerate(sizes) if sz >= min_frac * sizes.max()}
+    mask = np.isin(lbl, list(keep))
+    # Dilate slightly so the feathered edge of kept parts is not clipped.
+    grown = cv2.dilate(mask.astype(np.uint8), np.ones((5, 5), np.uint8)) > 0
+    return a * grown
+
+
 def cut(bgr: np.ndarray, box: tuple[int, int, int, int]) -> np.ndarray | None:
     x0, y0, x1, y1 = box
     crop = bgr[y0:y1, x0:x1]
-    a = alpha_for(crop)
+    a = drop_specks(alpha_for(crop))
     ys, xs = np.nonzero(a > 0.08)
     if len(xs) == 0:
         return None

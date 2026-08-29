@@ -26,14 +26,16 @@ export function ProductPreview({ className }: { className?: string }) {
       aria-hidden
     >
       {/* Sidebar */}
-      <aside className="border-line flex h-full w-[21cqw] shrink-0 flex-col border-r">
+      <div className="border-line flex h-full w-[21cqw] shrink-0 flex-col border-r">
         <div className="flex items-center gap-[1cqw] px-[1.6cqw] py-[1.5cqw]">
           <ZevqoraMark height={16} style={{ height: "2cqw", width: "auto" }} />
           <span className="text-[1.35cqw] font-semibold tracking-tight">
             {DEMO_WORKSPACE.name}
           </span>
         </div>
-        <nav className="flex flex-col gap-[0.15cqw] px-[0.8cqw]">
+        {/* Not a <nav>: this whole tree is aria-hidden decoration, and a
+            landmark here would show up in the page's landmark list. */}
+        <div className="flex flex-col gap-[0.15cqw] px-[0.8cqw]">
           {DEMO_WORKSPACE.nav.map((item, i) => (
             <span
               key={item}
@@ -45,22 +47,22 @@ export function ProductPreview({ className }: { className?: string }) {
               {item}
             </span>
           ))}
-        </nav>
+        </div>
         <div className="mt-auto px-[1.6cqw] py-[1.4cqw]">
           <span className="text-subtle font-mono text-[1.05cqw]">
             {DEMO_WORKSPACE.environment}
           </span>
         </div>
-      </aside>
+      </div>
 
       {/* Main */}
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="border-line flex items-center justify-between border-b px-[2cqw] py-[1.4cqw]">
+        <div className="border-line flex items-center justify-between border-b px-[2cqw] py-[1.4cqw]">
           <span className="text-[1.5cqw] font-semibold tracking-tight">Overview</span>
           <span className="border-line text-muted rounded-[0.5cqw] border px-[0.9cqw] py-[0.4cqw] font-mono text-[1.05cqw]">
             {DEMO_WORKSPACE.window}
           </span>
-        </header>
+        </div>
 
         <div className="flex-1 overflow-hidden px-[2cqw] py-[1.6cqw]">
           {/* Stat row */}

@@ -60,7 +60,7 @@ export function Hero() {
 
           {/* Zev sits at the foot of the stream, tucked against it rather than
               floating in the margin. */}
-          <div className="pointer-events-none mt-2 flex justify-center lg:-mt-6 lg:justify-end lg:pr-4">
+          <div className="pointer-events-none mt-2 flex justify-center lg:justify-end lg:pr-4 xl:-mt-6">
             <ZevScene view="three-quarter-front" height={200} priority />
           </div>
         </div>

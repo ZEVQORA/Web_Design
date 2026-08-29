@@ -20,14 +20,14 @@ export type ZevView =
  */
 const SPRITES: Record<ZevView, { w: number; h: number }> = {
   front: { w: 245, h: 306 },
-  "three-quarter-front": { w: 263, h: 304 },
-  side: { w: 273, h: 302 },
-  "three-quarter-back": { w: 233, h: 315 },
+  "three-quarter-front": { w: 260, h: 304 },
+  side: { w: 270, h: 302 },
+  "three-quarter-back": { w: 233, h: 303 },
   back: { w: 230, h: 304 },
-  "pose-sitting": { w: 140, h: 176 },
+  "pose-sitting": { w: 140, h: 167 },
   "pose-playful": { w: 168, h: 145 },
   "pose-thinking": { w: 141, h: 167 },
-  "pose-waving": { w: 144, h: 176 },
+  "pose-waving": { w: 144, h: 170 },
 };
 
 interface ZevProps {

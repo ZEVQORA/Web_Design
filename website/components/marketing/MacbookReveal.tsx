@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { MacbookPro } from "@/components/product-preview/MacbookPro";
 import { ProductPreview } from "@/components/product-preview/ProductPreview";
+import { ProductPreviewCompact } from "@/components/product-preview/ProductPreviewCompact";
 
 /**
  * The product reveal.
@@ -46,13 +47,12 @@ export function MacbookReveal() {
         </motion.div>
       </div>
 
-      {/* Below lg the enclosure would shrink the UI past readability, so the
-          preview is shown on its own framed surface instead. */}
+      {/* Below lg the enclosure would shrink the interface to roughly five-pixel
+          type - a picture of a product rather than a product - so the same
+          information is laid out for the width that actually exists. */}
       <div className="lg:hidden">
         <div className="border-line overflow-hidden rounded-lg border shadow-lift">
-          <div className="aspect-[501/324] w-full">
-            <ProductPreview />
-          </div>
+          <ProductPreviewCompact />
         </div>
       </div>
     </div>
