@@ -88,37 +88,46 @@ export default function DesignLab() {
       </header>
 
       <Section id="brand" title="Brand geometry">
-        <div className="flex flex-wrap items-end gap-12">
+        <p className="text-caption text-muted mb-8 max-w-[62ch]">
+          Wordmark is fixed brand geometry. Do not typeset with the UI font.
+          The Z mark is Soft Blue on every surface &mdash; there is no ink,
+          black or monochrome mark. On ink surfaces the wordmark goes light
+          and the mark stays Soft Blue.
+        </p>
+
+        <div className="flex flex-wrap items-end gap-x-14 gap-y-10">
           <div>
             <ZevqoraLogo size={40} />
-            <p className="text-caption text-subtle mt-3">Lockup, 40px mark</p>
+            <p className="text-caption text-subtle mt-3">Primary lockup</p>
           </div>
           <div>
             <ZevqoraLogo size={24} />
-            <p className="text-caption text-subtle mt-3">Lockup, 24px mark</p>
-          </div>
-          <div>
-            <ZevqoraMark height={48} className="text-accent" />
-            <p className="text-caption text-subtle mt-3">Mark, accent</p>
+            <p className="text-caption text-subtle mt-3">Compact primary lockup</p>
           </div>
           <div>
             <ZevqoraMark height={48} />
-            <p className="text-caption text-subtle mt-3">Mark, ink</p>
+            <p className="text-caption text-subtle mt-3">Soft Blue standalone mark</p>
           </div>
           <div>
             <ZevqoraWordmark height={20} />
-            <p className="text-caption text-subtle mt-3">Wordmark</p>
+            <p className="text-caption text-subtle mt-3">Canonical wordmark</p>
           </div>
         </div>
+
         <div
           data-surface="ink"
-          className="bg-canvas mt-8 flex flex-wrap items-center gap-10 rounded-lg p-8"
+          className="bg-canvas mt-10 flex flex-wrap items-center gap-x-14 gap-y-8 rounded-lg p-8"
         >
-          <ZevqoraLogo size={40} />
-          <ZevqoraMark height={40} className="text-ink" />
-          <p className="text-caption text-muted">
-            Inverted section, driven entirely by data-surface
-          </p>
+          <div>
+            <ZevqoraLogo variant="inverse" size={40} />
+            <p className="text-caption text-subtle mt-3">Dark-surface lockup</p>
+          </div>
+          <div>
+            <ZevqoraMark height={40} />
+            <p className="text-caption text-subtle mt-3">
+              Mark is unchanged on ink
+            </p>
+          </div>
         </div>
       </Section>
 

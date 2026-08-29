@@ -35,7 +35,6 @@ export function BrandLoader({
     >
       <ZevqoraMark
         height={32}
-        className="text-accent"
         // The pulse is opacity only - the mark never scales or spins, so the
         // geometry of the logo is never distorted.
         style={{ animation: "zq-loader-pulse 1600ms ease-in-out infinite" }}
